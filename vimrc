@@ -21,7 +21,6 @@ colorscheme purple_blue
 " get that background transparent
 hi Normal guibg=NONE ctermbg=NONE
 
-" keep more info in memory
 " hide, don't close, buffers
 set hidden
 " larger history to remember previous commands/searches
