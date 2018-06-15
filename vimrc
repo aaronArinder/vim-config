@@ -21,8 +21,6 @@ set showmatch " show matching parens
 set hlsearch " highlight search terms
 set smartcase " ignore case if lower, otherwise respecte
 set laststatus=2 " always display status line
-hi statusline ctermfg=202
-hi statusline ctermbg=NONE
 set statusline+=%F " show file path
 set statusline+=%1*%=%5l%* "current line
 set statusline+=%2*/%L%* "total lines
