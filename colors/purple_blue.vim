@@ -14,7 +14,7 @@ let g:colors_name = "purple_blue"
 "hi CTagsMember -- no settings --
 "hi CTagsGlobalConstant -- no settings --
 "hi Ignore -- no settings --
-hi Normal guifg=#00eeff guibg=#192224 guisp=#192224 gui=NONE ctermfg=202 ctermbg=NONE cterm=BOLD
+hi Normal guifg=#00eeff guibg=#192224 guisp=#192224 gui=NONE ctermfg=14 ctermbg=NONE cterm=BOLD
 "hi CTagsImport -- no settings --
 "hi CTagsGlobalVariable -- no settings --
 "hi EnumerationValue -- no settings --
