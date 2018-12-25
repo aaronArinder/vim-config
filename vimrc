@@ -18,7 +18,10 @@ colorscheme purple_blue
 
 " hide, don't close, buffers
 " hi Normal guibg=NONE ctermbg=NONE
+
 set hidden
+set undofile " persistent undoing
+set undodir=~/.vim/undodir " dir for saving previous states
 set history=100 " larger history to remember previous commands/searches
 set showmatch " show matching parens
 set hlsearch " highlight search terms
