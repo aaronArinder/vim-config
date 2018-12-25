@@ -56,6 +56,7 @@ hi CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 hi CursorLineNR cterm=bold
 set cursorline
 hi LineNr ctermfg=DarkGrey
+" end numbers
 
 " pathogen for managing plugins
 execute pathogen#infect()
