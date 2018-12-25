@@ -4,6 +4,7 @@ autocmd BufWritePre * :%s/\s\+$//e " remove whitespaces on save
 filetype plugin on " filetype detection for loading plugins
 filetype on
 syntax on " defaults syntax highlighting to be on
+set clipboard=unnamedplus "yank across terminals
 
 colorscheme purple_blue
 " vivify is an amazing resource for creating color schemes
