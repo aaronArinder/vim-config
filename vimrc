@@ -32,6 +32,23 @@ set statusline+=%1*%=%5l%* "current line
 set statusline+=%2*/%L%* "total lines
 set autoindent
 set expandtab " use spaces
+set tabstop=2
+
+" syntastic syntax checking
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_error_symbol = "✗"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+highlight SyntasticErrorSign guifg=NONE guibg=NONE
+highlight SignColumn cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+"let g:syntastic_enable_signs=0
+" end syntastic conf
 
 " set numbers, grey them out, but highlight/bold the current line
 set number
