@@ -6,6 +6,16 @@ filetype on
 syntax on " defaults syntax highlighting to be on
 set clipboard=unnamedplus "yank across terminals
 
+" REMAPPINGS
+" fold with spacebar
+set foldmethod=syntax " use syntax for folding
+set foldlevelstart=100 " start unfolded
+" suse spacebar for folding
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+
+
+" COLOR SCHEMES
 colorscheme purple_blue
 " vivify is an amazing resource for creating color schemes
 " other color scheme choices:
@@ -38,6 +48,8 @@ set tabstop=2
 
 " syntastic syntax checking
 let g:syntastic_javascript_checkers=['eslint']
+" ignore homegrown directives and angularJS-specific tags
+let g:syntastic_html_tidy_ignore_errors=['proprietary attribute']
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
