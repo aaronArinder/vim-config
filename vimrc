@@ -20,12 +20,8 @@ colorscheme purple_blue
 " vivify is an amazing resource for creating color schemes
 " other color scheme choices:
   " inkpot - more subdued
-  " tolerable - for bright days in the hammock, grrrl
-  "   - currently shit
   " colorzone: current replacement for outside
-  " purple_blue: nice torq, good purps
-  " ashen_modified
-  "   - funky pink shit
+  " purple_blue: nice torq, good purps :: DEFAULT
 " get that background transparent
 
 " hide, don't close, buffers
