@@ -10,7 +10,7 @@ set clipboard=unnamedplus "yank across terminals
 " fold with spacebar
 set foldmethod=syntax " use syntax for folding
 set foldlevelstart=100 " start unfolded
-" suse spacebar for folding
+" use spacebar for folding
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
@@ -33,7 +33,7 @@ set undodir=~/.vim/undodir " dir for saving previous states
 set history=100 " larger history to remember previous commands/searches
 set showmatch " show matching parens
 set hlsearch " highlight search terms
-set smartcase " ignore case if lower, otherwise respecte
+set smartcase " ignore case if lower, otherwise respect
 set laststatus=2 " always display status line
 set statusline+=%F " show file path
 set statusline+=%1*%=%5l%* "current line
@@ -42,6 +42,14 @@ set autoindent
 set expandtab " use spaces
 set tabstop=2
 
+" JSDoc plugin
+" interactive prompt
+let g:jsdoc_allow_input_prompt = 1
+" main description
+let g:jsdoc_input_description = 1
+" enables es6 taggin
+let g:jsdoc_enable_es6 = 1
+
 " syntastic syntax checking
 let g:syntastic_javascript_checkers=['eslint']
 " ignore homegrown directives and angularJS-specific tags
@@ -49,9 +57,13 @@ let g:syntastic_html_tidy_ignore_errors=['proprietary attribute']
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
 highlight SyntasticErrorSign guifg=NONE guibg=NONE
 highlight SignColumn cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 " end syntastic conf
+
+" git diffing with fugitive and git-gutter
+"set GitGutterLineHightlightsEnable
 
 " set numbers, grey them out, but highlight/bold the current line
 set number
