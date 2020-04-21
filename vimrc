@@ -1,8 +1,8 @@
 " this formats JSON, usage  :FormatJSON
 com! FormatJSON %!python -m json.tool
 
-" might be removed by ale below
-"autocmd BufWritePre * :%s/\s\+$//e " remove whitespaces on save
+" covered by ALE below
+autocmd BufWritePre * :%s/\s\+$//e " remove whitespaces on save
 filetype plugin on " filetype detection for loading plugins
 filetype on
 syntax on " defaults syntax highlighting to be on
@@ -46,10 +46,25 @@ set smartcase " ignore case if lower, otherwise respect
 set laststatus=2 " always display status line
 set statusline+=%F " show file path
 set statusline+=%1*%=%5l%* "current line
+set statusline+=:%c
 set statusline+=%2*/%L%* "total lines
 set autoindent
 set expandtab " use spaces
 set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set smartindent
+set smarttab
+set ignorecase
+
+" type handling bindings
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" go back to most recent file
+nmap <silent> gb :b# <Return>
 
 " JSDoc plugin
 " interactive prompt
@@ -95,10 +110,14 @@ set cursorline
 hi LineNr ctermfg=DarkGrey
 " end numbers
 
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint']
-\}
+"coc popup menu
+hi Pmenu ctermbg=DarkGrey ctermfg=LightGrey
+
+" temporarily rmeoved because it wasn't trimming whitespace properly
+"let g:ale_fixers = {
+"\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+"\   'javascript': ['eslint']
+"\}
 
 " https://github.com/w0rp/ale/blob/master/doc/ale-go.txt
 let g:ale_linters = {
@@ -116,7 +135,7 @@ call plug#end()
 " the following line must be called after plug#end() because, for whatever
 " stupid reason, plug#end() sets filetype indentation. See #379 of
 " junegunn/vim-plug
-filetype indent off 
+filetype indent off
 
 " pathogen for managing plugins
 execute pathogen#infect()
