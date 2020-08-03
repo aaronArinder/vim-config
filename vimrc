@@ -182,7 +182,13 @@ let g:ale_linters = {
 
 let g:ale_fix_on_save = 1 " fix files when you save
 
+" Hover descriptions/intellisense
 autocmd CursorHold * if ! coc#util#has_float() | call CocAction('doHover') | endif
+
+" Scroll floating window
+nnoremap <silent><expr><DOWN> coc#util#has_float() ? coc#util#float_scroll(1) : "\<down>"
+nnoremap <silent><expr><UP>  coc#util#has_float() ? coc#util#float_scroll(0) :  "\<up>"
+
 
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
