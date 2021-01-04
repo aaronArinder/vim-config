@@ -24,8 +24,10 @@ vnoremap <Space> zf
 imap jj <Esc>
 
 " COLOR SCHEMES
-colorscheme purple_blue
+colorscheme desertedocean
+" purple_blue
 " summerfruit256
+" desertedocean
 " vivify is an amazing resource for creating color schemes
 " other color scheme choices:
   " inkpot - more subdued
@@ -92,6 +94,11 @@ endfunction
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" yml indentation
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+" indentation guide
+let g:indentLine_char = '⦙'
 
 " Using CocList
 " Show all diagnostics
@@ -169,12 +176,6 @@ hi LineNr ctermfg=DarkGrey
 "coc popup menu
 hi Pmenu ctermbg=DarkGrey ctermfg=LightGrey
 
-" temporarily rmeoved because it wasn't trimming whitespace properly
-"let g:ale_fixers = {
-"\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-"\   'javascript': ['eslint']
-"\}
-
 " https://github.com/w0rp/ale/blob/master/doc/ale-go.txt
 let g:ale_linters = {
 \ 'javascript': ['eslint']
@@ -183,7 +184,7 @@ let g:ale_linters = {
 let g:ale_fix_on_save = 1 " fix files when you save
 
 " Hover descriptions/intellisense
-autocmd CursorHold * if ! coc#util#has_float() | call CocAction('doHover') | endif
+"autocmd CursorHold * if ! coc#util#has_float() | call CocAction('doHover') | endif
 
 " Scroll floating window
 nnoremap <silent><expr><DOWN> coc#util#has_float() ? coc#util#float_scroll(1) : "\<down>"
@@ -194,7 +195,7 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 "" markdown server: npm -g install instant-markdown-d
 "" https://github.com/suan/vim-instant-markdown
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+"Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 call plug#end()
 " the following line must be called after plug#end() because, for whatever
 " stupid reason, plug#end() sets filetype indentation. See #379 of
