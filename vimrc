@@ -217,6 +217,9 @@ endfunction
 map <silent> <C-O> :call ToggleVExplorer()<CR>
 map <silent> <C-F> :FZF<CR>
 
+" Run prettier on :w
+autocmd BufWritePre *.ts :silent %!prettier --stdin-filepath %
+
 " Hover descriptions/intellisense
 "autocmd CursorHold * if ! coc#util#has_float() | call CocAction('doHover') | endif
 
