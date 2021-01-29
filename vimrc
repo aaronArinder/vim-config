@@ -1,6 +1,3 @@
-" this formats JSON, usage  :FormatJSON
-com! FormatJSON %!python -m json.tool
-
 " AUTO COMMANDS
 " Removes whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -23,6 +20,10 @@ if system('uname -s') == "Darwin\n"
 else
   set clipboard=unnamedplus "Linux
 endif
+
+" MANUAL COMMANDS
+" this formats JSON, usage  :FormatJSON
+com! FormatJSON %!python -m json.tool
 
 " REMAPPINGS
 imap jj <Esc>
@@ -170,11 +171,11 @@ hi LineNr ctermfg=DarkGrey
 hi Pmenu ctermbg=DarkGrey ctermfg=LightGrey
 
 " https://github.com/w0rp/ale/blob/master/doc/ale-go.txt
-let g:ale_linters = {
-\ 'javascript': ['eslint']
-\}
+"let g:ale_linters = {
+"\ 'javascript': ['eslint']
+"\}
 
-let g:ale_fix_on_save = 1 " fix files when you save
+"let g:ale_fix_on_save = 1 " fix files when you save
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -225,5 +226,3 @@ call plug#end()
 " stupid reason, plug#end() sets filetype indentation. See #379 of junegunn/vim-plug
 filetype indent off
 
-" pathogen for managing plugins
-"execute pathogen#infect()
