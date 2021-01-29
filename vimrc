@@ -183,6 +183,39 @@ let g:ale_linters = {
 
 let g:ale_fix_on_save = 1 " fix files when you save
 
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 15
+
+" sort is affecting only: directories on the top, files below
+"let g:netrw_sort_sequence = '[\/]$,*'
+
+" Toggle Vexplore with Ctrl-O
+function! ToggleVExplorer()
+    if exists("t:expl_buf_num")
+        let expl_win_num = bufwinnr(t:expl_buf_num)
+        let cur_win_num = winnr()
+
+        if expl_win_num != -1
+            while expl_win_num != cur_win_num
+                exec "wincmd w"
+                let cur_win_num = winnr()
+            endwhile
+
+            close
+        endif
+
+        unlet t:expl_buf_num
+    else
+         Vexplore
+         let t:expl_buf_num = bufnr("%")
+    endif
+endfunction
+
+map <silent> <C-O> :call ToggleVExplorer()<CR>
+
 " Hover descriptions/intellisense
 "autocmd CursorHold * if ! coc#util#has_float() | call CocAction('doHover') | endif
 
