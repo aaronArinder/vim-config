@@ -1,8 +1,18 @@
 " this formats JSON, usage  :FormatJSON
 com! FormatJSON %!python -m json.tool
 
-" covered by ALE below
-autocmd BufWritePre * :%s/\s\+$//e " remove whitespaces on save
+" AUTO COMMANDS
+" Removes whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" yml indentation
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+" Spellchecking in markdown files
+autocmd FileType markdown setlocal spell
+" Run prettier on :w
+autocmd BufWritePre *.ts :silent %!prettier --stdin-filepath %
+
 filetype plugin on " filetype detection for loading plugins
 filetype on
 syntax on " defaults syntax highlighting to be on
@@ -15,28 +25,15 @@ else
 endif
 
 " REMAPPINGS
-" fold with spacebar
-set foldmethod=syntax " use syntax for folding
-set foldlevelstart=100 " start unfolded
-" use spacebar for folding
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-vnoremap <Space> zf
 imap jj <Esc>
 
 " COLOR SCHEMES
+" vivify is an amazing resource for creating color schemes
 colorscheme desertedocean
 " purple_blue
 " summerfruit256
 " desertedocean
-" vivify is an amazing resource for creating color schemes
 " other color scheme choices:
-  " inkpot - more subdued
-  " colorzone: current replacement for outside
-  " purple_blue: nice torq, good purps :: DEFAULT
-" get that background transparent
-
-" hide, don't close, buffers
-" hi Normal guibg=NONE ctermbg=NONE
 
 set backspace=indent,eol,start "more powerful backspacing
 set hidden
@@ -68,18 +65,19 @@ set updatetime=300
 set shortmess+=c
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"inoremap <silent><expr> <TAB>
+"      \ pumvisible() ? "\<C-n>" :
+"      \ <SID>check_back_space() ? "\<TAB>" :
+"      \ coc#refresh()
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+"function! s:check_back_space() abort
+"  let col = col('.') - 1
+"  return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
+
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+"inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -92,31 +90,27 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" yml indentation
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " indentation guide
-let g:indentLine_char = '⦙'
+"let g:indentLine_char = '⦙'
 
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+"nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+"nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+"nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+"nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+"nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+"nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+"nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " type handling bindings
 nmap <silent> gd <Plug>(coc-definition)
@@ -129,11 +123,11 @@ nmap <silent> gb :b# <Return>
 
 " JSDoc plugin
 " interactive prompt
-let g:jsdoc_allow_input_prompt = 1
+"let g:jsdoc_allow_input_prompt = 1
 " main description
-let g:jsdoc_input_description = 1
+"let g:jsdoc_input_description = 1
 " enables es6 taggin
-let g:jsdoc_enable_es6 = 1
+"let g:jsdoc_enable_es6 = 1
 
 " syntastic syntax checking
 "let g:syntastic_javascript_checkers=['eslint']
@@ -156,7 +150,6 @@ let g:jsdoc_enable_es6 = 1
 "let g:instant_markdown_port = 8888
 "let g:instant_markdown_python = 1
 "
-autocmd FileType markdown setlocal spell
 
 highlight SyntasticErrorSign guifg=NONE guibg=NONE
 highlight SignColumn cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
@@ -217,28 +210,20 @@ endfunction
 map <silent> <C-O> :call ToggleVExplorer()<CR>
 map <silent> <C-F> :FZF<CR>
 
-" Run prettier on :w
-autocmd BufWritePre *.ts :silent %!prettier --stdin-filepath %
-
-" Hover descriptions/intellisense
-"autocmd CursorHold * if ! coc#util#has_float() | call CocAction('doHover') | endif
-
 " Scroll floating window
 nnoremap <silent><expr><DOWN> coc#util#has_float() ? coc#util#float_scroll(1) : "\<down>"
 nnoremap <silent><expr><UP>  coc#util#has_float() ? coc#util#float_scroll(0) :  "\<up>"
 
 
 call plug#begin()
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug '/usr/local/opt/fzf'
-"" markdown server: npm -g install instant-markdown-d
-"" https://github.com/suan/vim-instant-markdown
-"Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'tpope/vim-fugitive'
 call plug#end()
 " the following line must be called after plug#end() because, for whatever
-" stupid reason, plug#end() sets filetype indentation. See #379 of
-" junegunn/vim-plug
+" stupid reason, plug#end() sets filetype indentation. See #379 of junegunn/vim-plug
 filetype indent off
 
 " pathogen for managing plugins
-execute pathogen#infect()
+"execute pathogen#infect()
