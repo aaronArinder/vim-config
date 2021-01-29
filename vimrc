@@ -215,6 +215,7 @@ function! ToggleVExplorer()
 endfunction
 
 map <silent> <C-O> :call ToggleVExplorer()<CR>
+map <silent> <C-F> :FZF<CR>
 
 " Hover descriptions/intellisense
 "autocmd CursorHold * if ! coc#util#has_float() | call CocAction('doHover') | endif
@@ -226,6 +227,7 @@ nnoremap <silent><expr><UP>  coc#util#has_float() ? coc#util#float_scroll(0) :  
 
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug '/usr/local/opt/fzf'
 "" markdown server: npm -g install instant-markdown-d
 "" https://github.com/suan/vim-instant-markdown
 "Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
