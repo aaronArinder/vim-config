@@ -2,7 +2,14 @@
 This vim config was started when I didn't know much about setting one up (spoiler: I still don't know much about setting one up), but it's slowly taking shape into something respectable.
 
 ## Setup
+### Prerequisites
 - `mkdir undodir` within `.vim`
+
+###
+- `:PlugInstall` to install plugins
+
+
+
 ## Remappings
 - `jj` acts as ESC
 - <shift-K> shows documentation of a symbol, such as TypeScript typings or JSDoc comments

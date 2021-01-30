@@ -50,11 +50,11 @@ set statusline+=%1*%=%5l%* "current line
 set statusline+=:%c
 set statusline+=%2*/%L%* "total lines
 set autoindent
+set smartindent
 set expandtab " use spaces
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set smartindent
 set smarttab
 set ignorecase
 
