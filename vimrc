@@ -9,6 +9,8 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType markdown setlocal spell
 " Run prettier on :w
 autocmd BufWritePre *.ts :silent %!prettier --stdin-filepath %
+" Golang add missing imports
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
 filetype plugin on " filetype detection for loading plugins
 filetype on
@@ -121,6 +123,12 @@ nmap <silent> gr <Plug>(coc-references)
 
 " go back to most recent file
 nmap <silent> gb :b# <Return>
+
+" better window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " JSDoc plugin
 " interactive prompt
