@@ -4,13 +4,15 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " yml indentation
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " Spellchecking in markdown files
 autocmd FileType markdown setlocal spell
-" Run prettier on :w
-autocmd BufWritePre *.ts :silent %!prettier --stdin-filepath %
+" Run prettier for typescript files on:w
+autocmd BufWritePre *.\(ts\|yml\|yaml\) :silent %!prettier --stdin-filepath %
 " Golang add missing imports
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+"
 
 filetype plugin on " filetype detection for loading plugins
 filetype on
