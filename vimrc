@@ -232,6 +232,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug '/usr/local/opt/fzf'
 Plug 'tpope/vim-fugitive'
 Plug 'cespare/vim-toml'
+Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 " the following line must be called after plug#end() because, for whatever
 " stupid reason, plug#end() sets filetype indentation. See #379 of junegunn/vim-plug
