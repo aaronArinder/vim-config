@@ -1,3 +1,5 @@
+" TODO: deep dive into https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
+
 " AUTO COMMANDS
 " Removes whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -231,7 +233,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug '/usr/local/opt/fzf'
 Plug 'tpope/vim-fugitive'
 Plug 'cespare/vim-toml'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
 call plug#end()
 " the following line must be called after plug#end() because, for whatever
 " stupid reason, plug#end() sets filetype indentation. See #379 of junegunn/vim-plug
