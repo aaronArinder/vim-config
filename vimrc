@@ -9,10 +9,9 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " Spellchecking in markdown files
 autocmd FileType markdown setlocal spell
 " Run prettier for typescript files on:w
-autocmd BufWritePre *.\(ts\|yml\|yaml\) :silent %!prettier --stdin-filepath %
+"autocmd BufWritePre *.\(ts\|yml\|yaml\) :silent %!prettier --stdin-filepath %
 " Golang add missing imports
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
-"
 
 filetype plugin on " filetype detection for loading plugins
 filetype on
