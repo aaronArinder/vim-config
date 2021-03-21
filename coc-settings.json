@@ -1,5 +1,11 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["typescript", "typescriptreact", "yml", "yaml"],
+    "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
+        "typescript",
+        "typescriptreact",
+        "yml",
+        "yaml"
+    ],
     "languageserver": {
         "ccls": {
             "command": "ccls",
