@@ -8,7 +8,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " yml indentation
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
 autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-autocmd FileType tf setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 " Spellchecking in markdown files
 autocmd FileType markdown setlocal spell
 " Run prettier for typescript files on:w
@@ -195,6 +194,12 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 15
 
+" vim-terraform config: https://github.com/hashivim/vim-terraform
+let g:terraform_align=1
+" keeping around just in case
+let g:terraform_fold_sections=0
+let g:terraform_fmt_on_save=1
+
 " sort is affecting only: directories on the top, files below
 "let g:netrw_sort_sequence = '[\/]$,*'
 
@@ -239,6 +244,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 " the following line must be called after plug#end() because, for whatever
 " stupid reason, plug#end() sets filetype indentation. See #379 of junegunn/vim-plug
