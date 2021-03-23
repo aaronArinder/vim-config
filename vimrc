@@ -7,7 +7,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " yml indentation
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd FileType tf setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 " Spellchecking in markdown files
 autocmd FileType markdown setlocal spell
 " Run prettier for typescript files on:w
