@@ -33,13 +33,6 @@ com! FormatJSON %!python -m json.tool
 " REMAPPINGS
 imap jj <Esc>
 
-" COLOR SCHEMES
-" vivify is an amazing resource for creating color schemes
-colorscheme desertedocean
-" purple_blue
-" summerfruit256
-" desertedocean
-" other color scheme choices:
 
 set backspace=indent,eol,start "more powerful backspacing
 set hidden
@@ -69,21 +62,6 @@ set cmdheight=2
 set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-"inoremap <silent><expr> <TAB>
-"      \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<TAB>" :
-"      \ coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-"function! s:check_back_space() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
-
-" Use <c-space> to trigger completion.
-"inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -95,28 +73,6 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-
-
-" indentation guide
-"let g:indentLine_char = '⦙'
-
-" Using CocList
-" Show all diagnostics
-"nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-"nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-"nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-"nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-"nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-"nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-"nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " type handling bindings
 nmap <silent> gd <Plug>(coc-definition)
@@ -133,42 +89,8 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" JSDoc plugin
-" interactive prompt
-"let g:jsdoc_allow_input_prompt = 1
-" main description
-"let g:jsdoc_input_description = 1
-" enables es6 taggin
-"let g:jsdoc_enable_es6 = 1
-
-" syntastic syntax checking
-"let g:syntastic_javascript_checkers=['eslint']
-" ignore homegrown directives and angularJS-specific tags
-"let g:syntastic_html_tidy_ignore_errors=['proprietary attribute']
-"let g:syntastic_error_symbol = "✗"
-"let g:syntastic_check_on_open = 0
-"let g:syntastic_check_on_wq = 0
-
-
-" markdown server defaults
-"let g:instant_markdown_slow = 1
-"let g:instant_markdown_autostart = 0
-"let g:instant_markdown_open_to_the_world = 1
-"let g:instant_markdown_allow_unsafe_content = 1
-"let g:instant_markdown_allow_external_content = 0
-"let g:instant_markdown_mathjax = 1
-"let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
-"let g:instant_markdown_autoscroll = 0
-"let g:instant_markdown_port = 8888
-"let g:instant_markdown_python = 1
-"
-
 highlight SyntasticErrorSign guifg=NONE guibg=NONE
 highlight SignColumn cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-" end syntastic conf
-
-" git diffing with fugitive and git-gutter
-"set GitGutterLineHightlightsEnable
 
 " set numbers, grey them out, but highlight/bold the current line
 set number
@@ -176,17 +98,9 @@ hi CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 hi CursorLineNR cterm=bold
 set cursorline
 hi LineNr ctermfg=DarkGrey
-" end numbers
 
 "coc popup menu
 hi Pmenu ctermbg=DarkGrey ctermfg=LightGrey
-
-" https://github.com/w0rp/ale/blob/master/doc/ale-go.txt
-"let g:ale_linters = {
-"\ 'javascript': ['eslint']
-"\}
-
-"let g:ale_fix_on_save = 1 " fix files when you save
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -196,12 +110,7 @@ let g:netrw_winsize = 15
 
 " vim-terraform config: https://github.com/hashivim/vim-terraform
 let g:terraform_align=1
-" keeping around just in case
-let g:terraform_fold_sections=0
 let g:terraform_fmt_on_save=1
-
-" sort is affecting only: directories on the top, files below
-"let g:netrw_sort_sequence = '[\/]$,*'
 
 " Toggle Vexplore with Ctrl-O
 function! ToggleVExplorer()
@@ -245,8 +154,19 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'hashivim/vim-terraform'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'artanikin/vim-synthwave84', { 'as': 'synthwave' }
 call plug#end()
 " the following line must be called after plug#end() because, for whatever
 " stupid reason, plug#end() sets filetype indentation. See #379 of junegunn/vim-plug
 filetype indent off
+
+" COLOR SCHEMES
+" vivify is an amazing resource for creating color schemes
+colorscheme dracula
+" dracula
+" synthwave
+" purple_blue
+" summerfruit256
+" desertedocean
 
