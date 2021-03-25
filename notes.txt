@@ -1,2 +1,6 @@
 03/25/2021
 First notes written with this new fancy shit!
+
+todos:
+    - deep dive into https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
+

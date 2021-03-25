@@ -1,4 +1,3 @@
-" TODO: deep dive into https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
 
 " AUTO COMMANDS
 " Removes whitespace on save
