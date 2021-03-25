@@ -134,7 +134,28 @@ function! ToggleVExplorer()
     endif
 endfunction
 
+function! ToggleNotes()
+    if exists("t:expl_buf_num")
+        let expl_win_num = bufwinnr(t:expl_buf_num)
+        let cur_win_num = winnr()
+
+        if expl_win_num != -1
+            while expl_win_num != cur_win_num
+                exec "wincmd j"
+                let cur_win_num = winnr()
+            endwhile
+            close
+        endif
+
+        unlet t:expl_buf_num
+    else
+        :belowright split notes.txt
+        let t:expl_buf_num = bufnr("%")
+    endif
+endfunction
+
 map <silent> <C-O> :call ToggleVExplorer()<CR>
+map <silent> <C-N> :call ToggleNotes()<CR>
 map <silent> <C-F> :FZF<CR>
 
 " Scroll floating window
