@@ -14,6 +14,7 @@ autocmd FileType markdown setlocal spell
 " Golang add missing imports
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
+
 filetype plugin on " filetype detection for loading plugins
 filetype on
 syntax on " defaults syntax highlighting to be on
@@ -164,8 +165,8 @@ nnoremap <silent><expr><UP>  coc#util#has_float() ? coc#util#float_scroll(0) :  
 
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'cespare/vim-toml'
 Plug 'pangloss/vim-javascript'
