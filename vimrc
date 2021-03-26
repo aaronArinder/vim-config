@@ -50,7 +50,7 @@ set smarttab
 set ignorecase
 
 " Better display for messages
-set cmdheight=2
+"set cmdheight=2
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 " don't give |ins-completion-menu| messages.
