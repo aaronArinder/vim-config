@@ -1,4 +1,3 @@
-
 " AUTO COMMANDS
 " Removes whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -13,7 +12,6 @@ autocmd FileType markdown setlocal spell
 "autocmd BufWritePre *.\(ts\|yml\|yaml\) :silent %!prettier --stdin-filepath %
 " Golang add missing imports
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
-
 
 filetype plugin on " filetype detection for loading plugins
 filetype on
@@ -42,11 +40,6 @@ set history=100 " larger history to remember previous commands/searches
 set showmatch " show matching parens
 set hlsearch " highlight search terms
 set smartcase " ignore case if lower, otherwise respect
-set laststatus=2 " always display status line
-set statusline+=%F " show file path
-set statusline+=%1*%=%5l%* "current line
-set statusline+=:%c
-set statusline+=%2*/%L%* "total lines
 set autoindent
 set smartindent
 set expandtab " use spaces
@@ -177,6 +170,8 @@ Plug 'jparise/vim-graphql'
 Plug 'hashivim/vim-terraform'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'artanikin/vim-synthwave84', { 'as': 'synthwave' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 " the following line must be called after plug#end() because, for whatever
 " stupid reason, plug#end() sets filetype indentation. See #379 of junegunn/vim-plug
