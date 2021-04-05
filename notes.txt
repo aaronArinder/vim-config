@@ -3,4 +3,6 @@ First notes written with this new fancy shit!
 
 todos:
     - deep dive into https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
+    - check out coc plugin hanzo/vim-snippets
+        - https://www.youtube.com/watch?v=ebrEY-6EwXI
 
