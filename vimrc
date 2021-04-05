@@ -25,6 +25,9 @@ if has("autocmd")   " check that we've autocmd
   augroup END
 endif
 
+map <silent> <C-T> :Terminalinsideyoureditorinsideyourterminal <CR>
+command Terminalinsideyoureditorinsideyourterminal :belowright split|terminal
+
 "yank across terminals
 if system('uname -s') == "Darwin\n"
   set clipboard=unnamed "OSX
