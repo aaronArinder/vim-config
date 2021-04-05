@@ -173,8 +173,8 @@ map <silent> <C-J> :call ToggleJournal()<CR>
 map <silent> <C-F> :FZF<CR>
 
 " Scroll floating window
-nnoremap <silent><expr><DOWN> coc#util#has_float() ? coc#util#float_scroll(1) : "\<down>"
-nnoremap <silent><expr><UP>  coc#util#has_float() ? coc#util#float_scroll(0) :  "\<up>"
+nnoremap <silent><expr><DOWN> coc#float#has_scroll() ? coc#float#scroll(1) : "\<down>"
+nnoremap <silent><expr><UP>  coc#float#has_scroll() ? coc#float#scroll(0) :  "\<up>"
 
 
 call plug#begin()
