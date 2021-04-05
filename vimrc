@@ -17,6 +17,14 @@ filetype plugin on " filetype detection for loading plugins
 filetype on
 syntax on " defaults syntax highlighting to be on
 
+if has("autocmd")   " check that we've autocmd
+  augroup templates " create group called templates
+    " runs every time we start to edit a non-existent file,
+    " inserting the contents of skelethon.sh at line 0
+    autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
+  augroup END
+endif
+
 "yank across terminals
 if system('uname -s') == "Darwin\n"
   set clipboard=unnamed "OSX
