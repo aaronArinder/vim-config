@@ -12,10 +12,13 @@ autocmd FileType markdown setlocal spell
 "autocmd BufWritePre *.\(ts\|yml\|yaml\) :silent %!prettier --stdin-filepath %
 " Golang add missing imports
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+"autocmd CursorHold * if ! coc#util#has_float() | call CocActionAsync('doHover') | endif
 
 filetype plugin on " filetype detection for loading plugins
 filetype on
 syntax on " defaults syntax highlighting to be on
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 if has("autocmd")   " check that we've autocmd
   augroup templates " create group called templates
@@ -189,7 +192,6 @@ nnoremap <silent><expr><UP>  coc#float#has_scroll() ? coc#float#scroll(0) :  "\<
 
 
 call plug#begin()
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
@@ -204,17 +206,15 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'artanikin/vim-synthwave84', { 'as': 'synthwave' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 " the following line must be called after plug#end() because, for whatever
 " stupid reason, plug#end() sets filetype indentation. See #379 of junegunn/vim-plug
 filetype indent off
 
 " COLOR SCHEMES
-" vivify is an amazing resource for creating color schemes
 colorscheme dracula
-" dracula
-" synthwave
-" purple_blue
-" summerfruit256
-" desertedocean
-
+" set t_Co=256   " This is may or may not needed.
+" set background=light
+" colorscheme PaperColor
