@@ -5,7 +5,8 @@
         "typescriptreact",
         "yml",
         "yaml",
-        "go"
+        "go",
+        "c"
     ],
     "languageserver": {
         "ccls": {
