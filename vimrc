@@ -176,7 +176,7 @@ function! ToggleJournal()
 
         unlet t:expl_buf_num
     else
-        :belowright split ~/notes/daily
+        :belowright split ~/notes/journal/daily
         let t:expl_buf_num = bufnr("%")
     endif
 endfunction
