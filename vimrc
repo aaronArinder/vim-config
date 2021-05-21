@@ -25,6 +25,7 @@ if has("autocmd")   " check that we've autocmd
     " runs every time we start to edit a non-existent file,
     " inserting the contents of skelethon.sh at line 0
     autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
+    autocmd BufNewFile *.sequence.uml 0r ~/.vim/templates/skeleton.sequence.uml
   augroup END
 endif
 
@@ -229,6 +230,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'earthly/earthly.vim', { 'branch': 'main' }
+Plug 'scrooloose/vim-slumlord'
+Plug 'aklt/plantuml-syntax'
 call plug#end()
 " the following line must be called after plug#end() because, for whatever
 " stupid reason, plug#end() sets filetype indentation. See #379 of junegunn/vim-plug

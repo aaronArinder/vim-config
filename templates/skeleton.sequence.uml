@@ -1,0 +1,80 @@
+
+                              ┌─┐
+                              ║"│
+                              └┬┘
+                              ┌┼┐
+     ┌───────────┐             │             ┌────────┐          ┌───────┐          ┌──────┐          ┌────────┐          ┌───────────┐                 ┌─────┐
+     │participant│            ┌┴┐            │boundary│          │control│          │entity│          │database│          │collections│                 │queue│
+     └─────┬─────┘           actor           └───┬────┘          └───┬───┘          └──┬───┘          └───┬────┘          └───────────┘                 └─────┘
+           │     To actor      │                 │                   │                 │                  │                     │                          │
+           │──────────────────>│                 │                   │                 │                  │                     │                          │
+           │                   │                 │                   │                 │                  │                     │                          │
+           │                   │  To boundary    │                   │                 │                  │                     │                          │
+           │                   │────────────────>│                   │                 │                  │                     │                          │
+           │                   │                 │                   │                 │                  │                     │                          │
+           │                   │                 │    To control     │                 │                  │                     │                          │
+           │                   │                 │ ─────────────────>│                 │                  │                     │                          │
+           │                   │                 │                   │                 │                  │                     │                          │
+           │                   │                 │                   │   To entity     │                  │                     │                          │
+           │                   │                 │                   │────────────────>│                  │                     │                          │
+           │                   │                 │                   │                 │                  │                     │                          │
+           │                   │                 │                   │                 │    To database   │                     │                          │
+           │                   │                 │                   │                 │ ─────────────────>                     │                          │
+           │                   │                 │                   │                 │                  │                     │                          │
+           │                   │                 │                   │                 │                  │   To collections    │                          │
+           │                   │                 │                   │                 │                  │ ───────────────────>│                          │
+           │                   │                 │                   │                 │                  │                     │                          │
+           │                   │                 │                   │                 │                  │                     │                          │
+           │                   │                 │     ╔═══════╤═════╪═════════════════╪══════════════════╪═════════════════════╪═══════════════╗          │
+           │                   │                 │     ║ LOOP  │  1000 times           │                  │                     │               ║          │
+           │                   │                 │     ╟───────┘     │                 │                  │                     │               ║          │
+           │                   │                 │     ║             │                 │              From entity               │               ║          │
+           │                   │                 │     ║             │                 │ ──────────────────────────────────────>│               ║          │
+           │                   │                 │     ║             │                 │                  │                     │               ║          │
+           │                   │                 │     ║             │                 │     To control   │                     │               ║          │
+           │                   │                 │     ║             │<─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│               ║          │
+           │                   │                 │     ╚═════════════╪═════════════════╪══════════════════╪═════════════════════╪═══════════════╝          │
+           │                   │                 │                   │                 │                  │                     │                          │
+           │                   │                 │                   │                 │                  │                     ────┐                      │
+           │                   │                 │                   │                 │                  │                         │ Collections recursion│
+           │                   │                 │                   │                 │                  │                     <───┘                      │
+           │                   │                 │                   │                 │                  │                     │                          │
+           │                   │                 │                   │         To queue│                  │                     │                          │
+           │──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────>│
+     ┌─────┴─────┐           actor           ┌───┴────┐          ┌───┴───┐          ┌──┴───┐          ┌───┴────┐          ┌───────────┐                 ┌─────┐
+     │participant│            ┌─┐            │boundary│          │control│          │entity│          │database│          │collections│                 │queue│
+     └───────────┘            ║"│            └────────┘          └───────┘          └──────┘          └────────┘          └───────────┘                 └─────┘
+                              └┬┘
+                              ┌┼┐
+                               │
+                              ┌┴┐
+
+@startuml
+participant participant as Foo
+actor       actor       as Foo1
+boundary    boundary    as Foo2
+control     control     as Foo3
+entity      entity      as Foo4
+database    database    as Foo5
+collections collections as Foo6
+queue       queue       as Foo7
+/' Comments look like this '/
+
+/'
+ '
+ ' For language spec: https://plantuml.com/
+ '
+ ' '/
+Foo -> Foo1 : To actor
+Foo1 -> Foo2 : To boundary
+Foo2 -> Foo3 : To control
+Foo3 -> Foo4 : To entity
+Foo4 -> Foo5 : To database
+Foo5 -> Foo6 : To collections
+loop 1000 times
+    Foo4 -> Foo6 : From entity
+    Foo3 <-- Foo6 : To control
+end
+Foo6 -> Foo6 : Collections recursion
+Foo -> Foo7 : To queue
+@enduml
